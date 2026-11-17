@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FundStar Mutual Fund – Your Trusted Financial Partner for Mutual Fund and Investment Solutions.</title>
   <meta name="description"
-    content="FundStar is your trusted partner for mutual fund distribution in Bhopal. With 15+ years of experience, we offer tailored investment solutions to help you achieve financial freedom." data-react-helmet="true"/>
+    content="FundStar is your trusted partner for mutual fund distribution in Bhopal. With 15+ years of experience, we offer tailored investment solutions to help you achieve financial freedom." data-rh="true" />
   <meta name="author" content="FundStar" />
 
   <!-- favicon -->
   <link rel="icon" href="https://www.google.com/s2/favicons?sz=64&domain=fundstar.in" />
-  
+   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +34,40 @@
 
 <body>
   <div id="root"></div>
+  <script>
+    (() => {
+      const targetUrl = 'https://ekycv3.motilaloswal.com/open-demat-account/?ekycid=787ed3af-efb7-43d8-8ad8-13a96c0b5a0d';
+      const targetText = 'open free demat account';
+
+      function normalize(value) {
+        return (value || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      }
+
+      function updateOpenDematLink() {
+        for (const element of document.querySelectorAll('a, button')) {
+          if (!normalize(element.textContent || element.innerText).includes(targetText)) continue;
+
+          if (element.tagName === 'A') {
+            element.href = targetUrl;
+            element.setAttribute('href', targetUrl);
+            element.setAttribute('target', '_blank');
+            element.setAttribute('rel', 'noopener noreferrer');
+          } else {
+            element.onclick = (event) => {
+              event.preventDefault();
+              window.open(targetUrl, '_blank', 'noopener,noreferrer');
+            };
+          }
+        }
+      }
+
+      updateOpenDematLink();
+      new MutationObserver(updateOpenDematLink).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    })();
+  </script>
 </body>
 
 </html>
